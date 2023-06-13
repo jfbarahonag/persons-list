@@ -1,1 +1,14 @@
-<h1>Persons list</h1>
+<section class="container">
+  <div class="row">
+    <h1>Persons list</h1>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ul>
+        <li *ngFor="let person of persons; let idx = index">
+          {{ idx+1 }}. {{ person.name.first }} {{ person.name.last }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
