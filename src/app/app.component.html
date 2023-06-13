@@ -3,49 +3,17 @@
     <h1>{{ title }}</h1>
   </div>
   <hr />
-  <form class="form row">
-    <div class="col-lg-6 mb-3">
-      <label for="first-name" class="visually-hidden">First Name</label>
-      <input
-        class="form-control"
-        type="text"
-        name="first-name"
-        id="first-name"
-        placeholder="First name"
-        [(ngModel)]="inputPerson.first"
-      />
-    </div>
-    <div class="col-lg-6 mb-3">
-      <label for="last-name" class="visually-hidden">Last Name</label>
-      <input
-        class="form-control"
-        type="text"
-        name="last-name"
-        id="last-name"
-        placeholder="Last name"
-        [(ngModel)]="inputPerson.last"
-      />
-    </div>
-    <div class="col mb-3">
-      <button type="submit" class="btn btn-primary me-3" (click)="addPerson()">
-        Add person
-      </button>
-      <button
-        type="submit"
-        class="btn btn-danger"
-        [disabled]="!persons.length"
-        (click)="clearPersonsList()"
-      >
-        Clear list
-      </button>
-    </div>
-  </form>
+  <app-form
+    (newPerson)="addNewPerson($event)"
+    (clearFlag)="clearList()"
+    [personsLength]="persons.length"
+  />
   <hr />
   <div class="row">
     <div class="col" *ngIf="persons.length; else emptyList">
       <ul>
         <li *ngFor="let person of persons; let idx = index">
-          <app-person [person]="person" [pos]="idx + 1"/>
+          <app-person [person]="person" [pos]="idx + 1" />
         </li>
       </ul>
     </div>

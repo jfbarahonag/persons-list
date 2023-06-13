@@ -13,14 +13,11 @@ export class AppComponent {
     new Person({ first: 'Viviana', last: 'Delgado' })
   ];
 
-  inputPerson: IName = { ...nameTemplate };
-
-  addPerson() {
-    this.persons.push(new Person(this.inputPerson))
-    this.inputPerson = { ...nameTemplate };
+  addNewPerson(person: Person) {
+    this.persons.push(person);
   }
 
-  clearPersonsList() {
+  clearList() {
     this.persons = [];
   }
 }

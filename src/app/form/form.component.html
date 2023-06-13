@@ -1,0 +1,37 @@
+<form class="form row">
+  <div class="col-lg-4 mb-3">
+    <label for="first-name" class="visually-hidden">First Name</label>
+    <input
+      class="form-control"
+      type="text"
+      name="first-name"
+      id="first-name"
+      placeholder="First name"
+      [(ngModel)]="inputPerson.first"
+    />
+  </div>
+  <div class="col-lg-4 mb-3">
+    <label for="last-name" class="visually-hidden">Last Name</label>
+    <input
+      class="form-control"
+      type="text"
+      name="last-name"
+      id="last-name"
+      placeholder="Last name"
+      [(ngModel)]="inputPerson.last"
+    />
+  </div>
+  <div class="col-lg-4 mb-3">
+    <button type="submit" class="btn btn-primary me-3" (click)="addPerson()">
+      Add person
+    </button>
+    <button
+      type="submit"
+      class="btn btn-danger"
+      [disabled]="!personsLength"
+      (click)="clearPersonsList()"
+    >
+      Clear list
+    </button>
+  </div>
+</form>
