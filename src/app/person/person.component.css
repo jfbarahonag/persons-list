@@ -1,0 +1,8 @@
+span {
+  font-size: 16px;
+  transition: font-size 0.3s ease;
+}
+
+span:hover {
+  font-size: 24px;
+}
