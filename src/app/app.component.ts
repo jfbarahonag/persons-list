@@ -19,4 +19,8 @@ export class AppComponent {
     this.persons.push(new Person(this.inputPerson))
     this.inputPerson = { ...nameTemplate };
   }
+
+  clearPersonsList() {
+    this.persons = [];
+  }
 }
