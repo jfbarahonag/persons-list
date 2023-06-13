@@ -1,7 +1,37 @@
 <section class="container">
   <div class="row">
-    <h1>Persons list</h1>
+    <h1>{{ title }}</h1>
   </div>
+  <hr />
+  <form class="form row">
+    <div class="col-lg-6 mb-3">
+      <label for="first-name" class="visually-hidden">First Name</label>
+      <input
+        class="form-control"
+        type="text"
+        name="first-name"
+        id="first-name"
+        placeholder="First name"
+        [(ngModel)]="inputPerson.first"
+      >
+    </div>
+    <div class="col-lg-6 mb-3">
+      <label for="last-name" class="visually-hidden">Last Name</label>
+      <input
+        class="form-control"
+        type="text"
+        name="last-name"
+        id="last-name"
+        placeholder="Last name"
+        [(ngModel)]="inputPerson.last"
+      >
+    </div>
+    <div class="col mb-3">
+      <button type="submit" class="btn btn-primary" (click)="addPerson()">
+        Add person
+      </button>
+    </div>
+  </form>
   <div class="row">
     <div class="col">
       <ul>

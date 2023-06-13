@@ -1,6 +1,11 @@
-interface IName {
+export interface IName {
   first: string
   last: string
+}
+
+export const nameTemplate: IName = {
+  first: '',
+  last: ''
 }
 
 export class Person {
