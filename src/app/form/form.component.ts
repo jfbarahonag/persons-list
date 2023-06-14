@@ -5,8 +5,7 @@ import { Component, EventEmitter, Output, Input, ViewChild, ElementRef } from '@
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css'],
-  providers: [LoggingService]
+  styleUrls: ['./form.component.css']
 })
 export class FormComponent {
   @Input() personsLength: number = 0;
