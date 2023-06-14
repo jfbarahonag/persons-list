@@ -17,8 +17,11 @@ export class AppComponent {
   ];
 
   addNewPerson(person: Person) {
-    this.persons.push(person);
-    this.loggingService.log(`New persons length -> ${this.persons.length}`);
+    // Add only if person does not match exactly
+    if (!this.persons.find(p => JSON.stringify(p.name) === JSON.stringify(person.name))) {
+      this.persons.push(person);
+      this.loggingService.log(`New persons length -> ${this.persons.length}`);
+    }
   }
 
   clearList() {
