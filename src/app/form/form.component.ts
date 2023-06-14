@@ -4,23 +4,23 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.css'],
 })
 export class FormComponent {
   @Input() personsLength: number = 0;
   @Output() newPerson = new EventEmitter<Person>();
   @Output() clearFlag = new EventEmitter<void>();
 
-  inputPerson: IName = { ...nameTemplate };
+  addPerson(firstName: HTMLInputElement, lastName: HTMLInputElement) {
+    const newName: IName = {
+      first: firstName.value,
+      last: lastName.value,
+    };
 
-  addPerson() {
-    if (JSON.stringify(this.inputPerson) !== JSON.stringify(nameTemplate)) {
+    if (JSON.stringify(newName) !== JSON.stringify(nameTemplate)) {
       // create person
-      const person = new Person(this.inputPerson);
-      this.newPerson.emit(person);
-      // clear fields
-      this.inputPerson = { ...nameTemplate };
-
+      const newPerson = new Person(newName);
+      this.newPerson.emit(newPerson);
     }
   }
 

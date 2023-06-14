@@ -7,7 +7,7 @@
       name="first-name"
       id="first-name"
       placeholder="First name"
-      [(ngModel)]="inputPerson.first"
+      #firstNameReference
     />
   </div>
   <div class="col-lg-4 mb-3">
@@ -18,11 +18,11 @@
       name="last-name"
       id="last-name"
       placeholder="Last name"
-      [(ngModel)]="inputPerson.last"
+      #lastNameReference
     />
   </div>
   <div class="col-lg-4 mb-3">
-    <button type="submit" class="btn btn-primary me-3" (click)="addPerson()">
+    <button type="submit" class="btn btn-primary me-3" (click)="addPerson(firstNameReference, lastNameReference)">
       Add person
     </button>
     <button
