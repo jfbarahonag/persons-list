@@ -1,1 +1,6 @@
-<span>{{ pos }}. {{ person.name.first }} {{ person.name.last }}</span>
+<div class="my-2">
+  <span>{{ pos }}. {{ person.name.first }} {{ person.name.last }}</span>
+  <button type="submit" class="ms-2 btn btn-info" (click)="onClickEdit()">
+    Edit
+  </button>
+</div>

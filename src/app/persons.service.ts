@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { LoggingService } from './logging.service';
 import { Person } from './person.model';
 
@@ -10,6 +10,8 @@ export class PersonsService {
     new Person({ first: 'Juan', last: 'Barahona' }),
     new Person({ first: 'Viviana', last: 'Delgado' }),
   ];
+
+  greetings = new EventEmitter<number>();
 
   addPerson(person: Person) {
     // Add only if person does not match exactly

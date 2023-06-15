@@ -14,8 +14,13 @@ export class FormComponent {
 
   constructor(
     private loggingService: LoggingService,
-    private personsService: PersonsService
-  ) {}
+    private personsService: PersonsService,
+  ) {
+    this.personsService.greetings.subscribe((pos: number) => {
+      const idx = pos - 1;
+      alert(`Click on ${idx}`);
+    })
+  }
 
   getPersonsLength() {
     return this.personsService.getList().length;

@@ -1,3 +1,4 @@
+import { PersonsService } from './../persons.service';
 import { nameTemplate } from './../person.model';
 import { Component, Input } from '@angular/core';
 import { Person } from '../person.model';
@@ -10,5 +11,9 @@ export class PersonComponent {
   @Input() person: Person = new Person(nameTemplate);
   @Input() pos: number = -1;
 
-  constructor() {}
+  constructor(private personsService: PersonsService) {}
+
+  onClickEdit() {
+    this.personsService.greetings.emit(this.pos)
+  }
 }
