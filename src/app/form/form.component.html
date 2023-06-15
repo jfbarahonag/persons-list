@@ -28,7 +28,7 @@
     <button
       type="submit"
       class="btn btn-danger"
-      [disabled]="!personsLength"
+      [disabled]="!getPersonsLength()"
       (click)="clearPersonsList()"
     >
       Clear list

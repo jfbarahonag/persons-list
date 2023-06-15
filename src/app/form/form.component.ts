@@ -1,6 +1,7 @@
+import { PersonsService } from './../persons.service';
 import { LoggingService } from './../logging.service';
 import { IName, nameTemplate, Person } from './../person.model';
-import { Component, EventEmitter, Output, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -8,13 +9,17 @@ import { Component, EventEmitter, Output, Input, ViewChild, ElementRef } from '@
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-  @Input() personsLength: number = 0;
-  @Output() newPerson = new EventEmitter<Person>();
-  @Output() clearFlag = new EventEmitter<void>();
   @ViewChild('firstNameReference') firstName: ElementRef | undefined = undefined;
   @ViewChild('lastNameReference') lastName: ElementRef | undefined = undefined;
 
-  constructor(private loggingService: LoggingService) {}
+  constructor(
+    private loggingService: LoggingService,
+    private personsService: PersonsService
+  ) {}
+
+  getPersonsLength() {
+    return this.personsService.getList().length;
+  }
 
   addPerson() {
     if (!this.firstName || !this.lastName) {
@@ -31,11 +36,11 @@ export class FormComponent {
       this.loggingService.log(`New person: ${newName.first} ${newName.last}`);
       // create person
       const newPerson = new Person(newName);
-      this.newPerson.emit(newPerson);
+      this.personsService.addPerson(newPerson);
     }
   }
 
   clearPersonsList() {
-    this.clearFlag.emit();
+    this.personsService.clearList();
   }
 }

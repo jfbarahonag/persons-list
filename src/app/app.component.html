@@ -3,11 +3,7 @@
     <h1>{{ title }}</h1>
   </div>
   <hr />
-  <app-form
-    (newPerson)="onAddNewPerson($event)"
-    (clearFlag)="onClearPersonsList()"
-    [personsLength]="getPersons().length"
-  />
+  <app-form />
   <hr />
   <div class="row">
     <div class="col" *ngIf="getPersons().length; else emptyList">

@@ -21,14 +21,4 @@ export class AppComponent implements OnInit {
   }
 
   title = 'Persons list';
-
-  onAddNewPerson(person: Person) {
-    this.personsService.addPerson(person);
-    this.loggingService.log(`New persons length -> ${this.getPersons().length}`);
-  }
-
-  onClearPersonsList() {
-    this.personsService.clearList();
-    this.loggingService.log(`New persons length -> ${this.getPersons().length}`);
-  }
 }
