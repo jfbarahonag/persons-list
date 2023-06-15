@@ -1,3 +1,4 @@
+import { PersonsService } from './persons.service';
 import { LoggingService } from './logging.service';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +18,7 @@ import { FormComponent } from './form/form.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [LoggingService],
+  providers: [LoggingService, PersonsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
