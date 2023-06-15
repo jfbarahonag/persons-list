@@ -1,4 +1,3 @@
-import { LoggingService } from './logging.service';
 import { Person } from './person.model';
 export class PersonsService {
 

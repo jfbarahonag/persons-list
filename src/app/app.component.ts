@@ -1,5 +1,6 @@
+import { PersonsService } from './persons.service';
 import { LoggingService } from './logging.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Person } from './person.model';
 
 @Component({
@@ -7,25 +8,27 @@ import { Person } from './person.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  constructor(private loggingService: LoggingService) {}
+export class AppComponent implements OnInit {
+  constructor(
+    private loggingService: LoggingService,
+    private personsService: PersonsService
+  ) {}
 
-  title = 'Persons list';
-  persons: Person[] = [
-    new Person({ first: 'Juan', last: 'Barahona' }),
-    new Person({ first: 'Viviana', last: 'Delgado' }),
-  ];
+  ngOnInit(): void {}
 
-  addNewPerson(person: Person) {
-    // Add only if person does not match exactly
-    if (!this.persons.find(p => JSON.stringify(p.name) === JSON.stringify(person.name))) {
-      this.persons.push(person);
-      this.loggingService.log(`New persons length -> ${this.persons.length}`);
-    }
+  getPersons() {
+    return this.personsService.getList();
   }
 
-  clearList() {
-    this.persons = [];
-    this.loggingService.log(`New persons length -> ${this.persons.length}`);
+  title = 'Persons list';
+
+  onAddNewPerson(person: Person) {
+    this.personsService.addPerson(person);
+    this.loggingService.log(`New persons length -> ${this.getPersons().length}`);
+  }
+
+  onClearPersonsList() {
+    this.personsService.clearList();
+    this.loggingService.log(`New persons length -> ${this.getPersons().length}`);
   }
 }
