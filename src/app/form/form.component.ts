@@ -1,7 +1,7 @@
 import { PersonsService } from './../persons.service';
 import { LoggingService } from './../logging.service';
 import { IName, nameTemplate, Person } from './../person.model';
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -9,9 +9,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-  @ViewChild('firstNameReference') firstName: ElementRef | undefined = undefined;
-  @ViewChild('lastNameReference') lastName: ElementRef | undefined = undefined;
-
   constructor(
     private loggingService: LoggingService,
     private personsService: PersonsService,
@@ -21,6 +18,9 @@ export class FormComponent {
       alert(`Click on ${idx}`);
     })
   }
+
+  firstName = null;
+  lastName = null;
 
   getPersonsLength() {
     return this.personsService.getList().length;
@@ -33,8 +33,8 @@ export class FormComponent {
     }
 
     const newName: IName = {
-      first: this.firstName.nativeElement.value,
-      last: this.lastName.nativeElement.value,
+      first: this.firstName,
+      last: this.lastName,
     };
 
     if (JSON.stringify(newName) !== JSON.stringify(nameTemplate)) {
@@ -42,6 +42,9 @@ export class FormComponent {
       // create person
       const newPerson = new Person(newName);
       this.personsService.addPerson(newPerson);
+      // clean fields
+      this.firstName = null;
+      this.lastName = null;
     }
   }
 

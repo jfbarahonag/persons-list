@@ -1,6 +1,7 @@
-<div class="my-2">
+<div class="item">
+  <input
+    type="checkbox"
+    (click)="onClickEdit()"
+  />
   <span>{{ pos }}. {{ person.name.first }} {{ person.name.last }}</span>
-  <button type="submit" class="ms-2 btn btn-info" (click)="onClickEdit()">
-    Edit
-  </button>
 </div>

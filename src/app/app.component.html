@@ -1,21 +1,16 @@
-<section class="container">
-  <div class="row">
+<!-- heading -->
+<section class="box" id="heading">
     <h1>{{ title }}</h1>
-  </div>
-  <hr />
-  <app-form />
-  <hr />
-  <div class="row">
-    <div class="col" *ngIf="getPersons().length; else emptyList">
-      <ul>
-        <li *ngFor="let person of getPersons(); let idx = index">
-          <app-person [person]="person" [pos]="idx + 1" />
-        </li>
-      </ul>
-    </div>
-  </div>
 </section>
-
-<ng-template #emptyList>
-  <h1>Uh oh, your list is empty!</h1>
-</ng-template>
+<!-- persons list -->
+<section class="box">
+  <app-person
+    *ngFor="let person of getPersons(); let idx = index"
+    [person]="person"
+    [pos]="idx + 1"
+  />
+</section>
+<!-- person form -->
+<section class="box">
+  <app-form />
+</section>
