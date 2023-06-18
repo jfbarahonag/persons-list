@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { PersonsService } from './persons.service';
 import { LoggingService } from './logging.service';
 import { NgModule } from '@angular/core';
@@ -9,16 +10,9 @@ import { PersonComponent } from './person/person.component';
 import { FormComponent } from './form/form.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PersonComponent,
-    FormComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
+  declarations: [AppComponent, PersonComponent, FormComponent],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [LoggingService, PersonsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
