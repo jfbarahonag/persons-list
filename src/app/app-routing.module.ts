@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { FormComponent } from './persons/form/form.component';
 import { PersonsComponent } from './persons/persons.component';
@@ -22,6 +23,10 @@ const routes: Routes = [
         component: FormComponent,
       },
     ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '**',

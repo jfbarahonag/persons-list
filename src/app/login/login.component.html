@@ -1,0 +1,11 @@
+<section class="box">
+  <form class="item" #loginF="ngForm" (ngSubmit)="loginF.form.valid && login(loginF)">
+    <div>
+      <input type="email" name="email" placeholder="Email" ngModel required size="20" />
+    </div>
+    <div>
+      <input type="password" name="password" placeholder="Password" ngModel required size="15" />
+    </div>
+    <button type="submit" style="cursor: pointer;"><i class="fa fa-sign-in"></i></button>
+  </form>
+</section>

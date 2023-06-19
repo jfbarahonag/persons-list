@@ -12,9 +12,10 @@ import { FormComponent } from './persons/form/form.component';
 import { PersonsComponent } from './persons/persons.component';
 import { ErrorComponent } from './error/error.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, PersonComponent, FormComponent, PersonsComponent, ErrorComponent],
+  declarations: [AppComponent, PersonComponent, FormComponent, PersonsComponent, ErrorComponent, LoginComponent],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [LoggingService, PersonsService, DataServices],
   bootstrap: [AppComponent],
