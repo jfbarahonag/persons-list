@@ -21,10 +21,21 @@ export class FormComponent implements OnInit {
       alert(`Click on ${idx}`);
     })
   }
+
+  firstName: string | null = null;
+  lastName: string | null = null;
+  idx: number | undefined = undefined;
+  editMode: number = 0;
+
   ngOnInit(): void {
     this.idx = this.route.snapshot.params['id'];
+    this.editMode = Number(this.route.snapshot.queryParams['editMode']);
 
-    if (!this.idx) return // add new person
+    // add new person
+    if (this.idx === undefined) {
+      this.editMode = 1;
+      return;
+    }
 
     // validate if idx exists
     if (
@@ -40,10 +51,6 @@ export class FormComponent implements OnInit {
     this.firstName = person.name.first;
     this.lastName = person.name.last;
   }
-
-  firstName: string | null = null;
-  lastName: string | null = null;
-  idx: number | undefined = undefined;
 
   getPersonsLength() {
     return this.personsService.getList().length;
@@ -67,12 +74,9 @@ export class FormComponent implements OnInit {
         // Add new person
         this.loggingService.log(`New person: ${newName.first} ${newName.last}`);
         this.personsService.addPerson(newPerson);
-        // clean fields
-        this.firstName = null;
-        this.lastName = null;
       } else {
         // Edit person
-        this.personsService.updatePerson(this.idx, newPerson);
+        if (this.editMode === 1) this.personsService.updatePerson(this.idx, newPerson);
       }
       // go to people endpoint
       this.router.navigate(['people']);

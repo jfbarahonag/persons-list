@@ -1,6 +1,6 @@
 <div class="item">
   <ul>
-    <li><a [routerLink]="['/people', pos-1]">
+    <li><a [routerLink]="['/people', pos-1]" [queryParams]="{editMode: '1'}">
       {{ person.name.first }} {{ person.name.last }}
     </a></li>
   </ul>

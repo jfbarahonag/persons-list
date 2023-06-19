@@ -16,9 +16,15 @@
       placeholder="Last name"
       [(ngModel)]="lastName"
     />
-    <button type="submit" style="cursor: pointer; margin-right: 4px">+</button>
     <button
-      *ngIf="idx"
+      *ngIf="this.editMode"
+      type="submit"
+      style="cursor: pointer; margin-right: 4px"
+    >
+      +
+    </button>
+    <button
+      *ngIf="idx && this.editMode"
       type="button"
       (click)="removePerson()"
       style="cursor: pointer; margin-right: 4px"
