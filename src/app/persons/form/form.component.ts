@@ -26,6 +26,15 @@ export class FormComponent implements OnInit {
 
     if (!this.idx) return // add new person
 
+    // validate if idx exists
+    if (
+      isNaN(this.idx) ||
+      this.idx < 0 || this.idx > this.personsService.getList().length - 1
+    ) {
+      this.router.navigate(['/people']);
+      return;
+    };
+
     // edit person
     const person: Person = this.personsService.getPersonByIdx(this.idx);
     this.firstName = person.name.first;
