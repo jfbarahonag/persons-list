@@ -13,7 +13,8 @@ export class DataServices {
     'https://people-list-91a74-default-rtdb.firebaseio.com/data.json';
 
   savePersons(persons: Person[]) {
-    this.httpClient.put(this.url, persons).subscribe(
+    const token = this.loginService.getIdToken();
+    this.httpClient.put(`${this.url}?auth=${token}`, persons).subscribe(
       (response) => {
         console.log('save persons result: ', response);
       },
@@ -29,14 +30,16 @@ export class DataServices {
   }
 
   updatePerson(idx: number, data: Person) {
-    const personUrl = `${this.url.split('.json')[0]}/${idx}.json`;
+    const token = this.loginService.getIdToken();
+    const personUrl = `${this.url.split('.json')[0]}/${idx}.json?auth=${token}`;
     this.httpClient
       .put(personUrl, data)
       .subscribe((response) => console.log(response));
   }
 
   removePerson(idx: number) {
-    const personUrl = `${this.url.split('.json')[0]}/${idx}.json`;
+    const token = this.loginService.getIdToken();
+    const personUrl = `${this.url.split('.json')[0]}/${idx}.json?auth=${token}`;
     this.httpClient
       .delete(personUrl)
       .subscribe((response) => console.log(response));
