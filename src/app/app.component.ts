@@ -1,24 +1,12 @@
-import { PersonsService } from './persons.service';
-import { LoggingService } from './logging.service';
-import { Component, OnInit } from '@angular/core';
-import { Person } from './person.model';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-  constructor(
-    private loggingService: LoggingService,
-    private personsService: PersonsService
-  ) {}
-
-  ngOnInit(): void {}
-
-  getPersons() {
-    return this.personsService.getList();
-  }
+export class AppComponent {
+  constructor() {}
 
   title = 'Persons list';
 }

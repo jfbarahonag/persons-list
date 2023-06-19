@@ -1,0 +1,12 @@
+<!-- persons list -->
+<section class="box">
+  <app-person
+    *ngFor="let person of getPersons(); let idx = index"
+    [person]="person"
+    [pos]="idx + 1"
+  />
+</section>
+<!-- person form -->
+<section class="box">
+  <app-form />
+</section>

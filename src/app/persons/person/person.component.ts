@@ -1,7 +1,7 @@
-import { PersonsService } from './../persons.service';
-import { nameTemplate } from './../person.model';
+import { PersonsService } from '../../persons.service';
+import { nameTemplate } from '../../person.model';
 import { Component, Input } from '@angular/core';
-import { Person } from '../person.model';
+import { Person } from '../../person.model';
 @Component({
   selector: 'app-person',
   templateUrl: './person.component.html',

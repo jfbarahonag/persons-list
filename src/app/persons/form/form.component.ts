@@ -1,6 +1,6 @@
-import { PersonsService } from './../persons.service';
-import { LoggingService } from './../logging.service';
-import { IName, nameTemplate, Person } from './../person.model';
+import { PersonsService } from '../../persons.service';
+import { LoggingService } from '../../logging.service';
+import { IName, nameTemplate, Person } from '../../person.model';
 import { Component } from '@angular/core';
 
 @Component({
