@@ -1,3 +1,4 @@
+import { DataServices } from './data.services';
 import { AppRoutingModule } from './app-routing.module';
 import { PersonsService } from './persons.service';
 import { LoggingService } from './logging.service';
@@ -10,11 +11,12 @@ import { PersonComponent } from './persons/person/person.component';
 import { FormComponent } from './persons/form/form.component';
 import { PersonsComponent } from './persons/persons.component';
 import { ErrorComponent } from './error/error.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, PersonComponent, FormComponent, PersonsComponent, ErrorComponent],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
-  providers: [LoggingService, PersonsService],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
+  providers: [LoggingService, PersonsService, DataServices],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

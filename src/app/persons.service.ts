@@ -1,10 +1,14 @@
+import { DataServices } from './data.services';
 import { Injectable, EventEmitter } from '@angular/core';
 import { LoggingService } from './logging.service';
 import { Person } from './person.model';
 
 @Injectable()
 export class PersonsService {
-  constructor(private loggingService: LoggingService) {}
+  constructor(
+    private loggingService: LoggingService,
+    private dataServices: DataServices
+  ) {}
 
   private persons: Person[] = [
     new Person({ first: 'Juan', last: 'Barahona' }),
@@ -21,6 +25,7 @@ export class PersonsService {
       )
     ) {
       this.persons.push(person);
+      this.dataServices.savePersons(this.persons);
       this.loggingService.log('----- New person added -----');
     }
   }
