@@ -1,3 +1,4 @@
+import { ErrorComponent } from './error/error.component';
 import { FormComponent } from './persons/form/form.component';
 import { PersonsComponent } from './persons/persons.component';
 import { NgModule } from '@angular/core';
@@ -22,6 +23,10 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: '**',
+    component: ErrorComponent
+  }
 ];
 
 @NgModule({
