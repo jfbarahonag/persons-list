@@ -33,4 +33,12 @@ export class PersonsService {
   getList() {
     return this.persons;
   }
+
+  getPersonByIdx(idx: number) {
+    return this.persons[idx];
+  }
+
+  updatePerson(idx: number, newPersonData: Person) {
+    this.persons[idx] = newPersonData;
+  }
 }

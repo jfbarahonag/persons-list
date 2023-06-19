@@ -18,6 +18,6 @@ export class PersonsComponent {
   }
 
   addPerson() {
-    this.router.navigate(['person/add'])
+    this.router.navigate(['people/add'])
   }
 }

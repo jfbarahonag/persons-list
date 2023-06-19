@@ -1,7 +1,7 @@
 <div class="item">
-  <input
-    type="checkbox"
-    (click)="onClickEdit()"
-  />
-  <span>{{ pos }}. {{ person.name.first }} {{ person.name.last }}</span>
+  <ul>
+    <li><a [routerLink]="['/people', pos-1]">
+      {{ person.name.first }} {{ person.name.last }}
+    </a></li>
+  </ul>
 </div>
