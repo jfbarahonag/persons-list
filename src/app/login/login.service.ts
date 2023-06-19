@@ -4,7 +4,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 @Injectable()
 export class LoginService {
-  token: string | undefined = undefined;
+  token: string = '';
 
   constructor(private router: Router) {}
 
@@ -14,10 +14,10 @@ export class LoginService {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        user.getIdToken().then((token) => (this.token = token));
-      })
-      .then(() => {
-        this.router.navigate(['/']);
+        user.getIdToken().then((token) => {
+          this.token = token;
+          this.router.navigate(['/']);
+        });
       })
       .catch((err) => {
         console.error(`Login error code: ${err.code}`);
