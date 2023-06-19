@@ -2,6 +2,7 @@ import { PersonsService } from '../../persons.service';
 import { LoggingService } from '../../logging.service';
 import { IName, nameTemplate, Person } from '../../person.model';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -12,6 +13,7 @@ export class FormComponent {
   constructor(
     private loggingService: LoggingService,
     private personsService: PersonsService,
+    private router: Router
   ) {
     this.personsService.greetings.subscribe((pos: number) => {
       const idx = pos - 1;
@@ -26,7 +28,7 @@ export class FormComponent {
     return this.personsService.getList().length;
   }
 
-  addPerson() {
+  onSavePerson() {
     if (!this.firstName || !this.lastName) {
       console.error('Error fname, lname')
       return;
@@ -45,6 +47,8 @@ export class FormComponent {
       // clean fields
       this.firstName = null;
       this.lastName = null;
+      // go to people endpoint
+      this.router.navigate(['people']);
     }
   }
 

@@ -1,5 +1,7 @@
-<form class="item">
+<section class="box">
+  <form class="item" (ngSubmit)="f.form.valid && onSavePerson()" #f="ngForm">
     <input
+      required
       type="text"
       name="first-name"
       id="first-name"
@@ -7,24 +9,13 @@
       [(ngModel)]="firstName"
     />
     <input
+      required
       type="text"
       name="last-name"
       id="last-name"
       placeholder="Last name"
       [(ngModel)]="lastName"
     />
-    <button type="submit" (click)="addPerson()">
-      <i>+</i>
-    </button>
-    <button type="button" (click)="clearPersonsList()">
-      <i class="fa fa-trash" aria-hidden="false"></i>
-    </button>
-
-    <!-- <button
-      type="submit"
-      [disabled]="!getPersonsLength()"
-      (click)="clearPersonsList()"
-    >
-      Clear list
-    </button> -->
-</form>
+    <button type="submit" style="cursor: pointer">+</button>
+  </form>
+</section>
