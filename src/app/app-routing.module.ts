@@ -11,14 +11,16 @@ const routes: Routes = [
   {
     path: 'people',
     component: PersonsComponent,
-  },
-  {
-    path: 'people/add',
-    component: FormComponent,
-  },
-  {
-    path: 'people/:id',
-    component: FormComponent,
+    children: [
+      {
+        path: 'add',
+        component: FormComponent,
+      },
+      {
+        path: ':id',
+        component: FormComponent,
+      },
+    ]
   },
 ];
 
