@@ -1,4 +1,4 @@
-import { DataServices } from './data.services';
+import { DataServices } from './data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { PersonsService } from './persons.service';
 import { LoggingService } from './logging.service';

@@ -40,7 +40,7 @@ export class FormComponent implements OnInit {
     // validate if idx exists
     if (
       isNaN(this.idx) ||
-      this.idx < 0 || this.idx > this.personsService.getList().length - 1
+      this.idx < 0
     ) {
       this.router.navigate(['/people']);
       return;
@@ -50,10 +50,6 @@ export class FormComponent implements OnInit {
     const person: Person = this.personsService.getPersonByIdx(this.idx);
     this.firstName = person.name.first;
     this.lastName = person.name.last;
-  }
-
-  getPersonsLength() {
-    return this.personsService.getList().length;
   }
 
   onSavePerson() {

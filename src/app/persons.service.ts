@@ -1,4 +1,4 @@
-import { DataServices } from './data.services';
+import { DataServices } from './data.service';
 import { Injectable, EventEmitter } from '@angular/core';
 import { LoggingService } from './logging.service';
 import { Person } from './person.model';
@@ -10,12 +10,17 @@ export class PersonsService {
     private dataServices: DataServices
   ) {}
 
-  private persons: Person[] = [
-    new Person({ first: 'Juan', last: 'Barahona' }),
-    new Person({ first: 'Viviana', last: 'Delgado' }),
-  ];
+  private persons: Person[] = [];
 
   greetings = new EventEmitter<number>();
+
+  setPersons(persons: Person[]) {
+    if (persons === null) {
+      this.persons = [];
+    } else {
+      this.persons = persons;
+    }
+  }
 
   addPerson(person: Person) {
     // Add only if person does not match exactly
@@ -36,7 +41,7 @@ export class PersonsService {
   }
 
   getList() {
-    return this.persons;
+    return this.dataServices.getPersons();
   }
 
   getPersonByIdx(idx: number) {
