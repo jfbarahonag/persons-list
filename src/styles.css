@@ -66,6 +66,10 @@ button {
   border-width: 0;
 }
 
+.button-red {
+  background-color: red;
+}
+
 input[type="text"] {
   text-align: center;
   height: 60px;

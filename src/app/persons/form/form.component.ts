@@ -22,7 +22,7 @@ export class FormComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    this.idx = this.route.snapshot.params['id']
+    this.idx = this.route.snapshot.params['id'];
 
     if (!this.idx) return // add new person
 
@@ -43,7 +43,7 @@ export class FormComponent implements OnInit {
 
   firstName: string | null = null;
   lastName: string | null = null;
-  idx: number | null = null;
+  idx: number | undefined = undefined;
 
   getPersonsLength() {
     return this.personsService.getList().length;
@@ -63,7 +63,7 @@ export class FormComponent implements OnInit {
     if (JSON.stringify(newName) !== JSON.stringify(nameTemplate)) {
       // create person
       const newPerson = new Person(newName);
-      if (!this.idx) {
+      if (this.idx === undefined) {
         // Add new person
         this.loggingService.log(`New person: ${newName.first} ${newName.last}`);
         this.personsService.addPerson(newPerson);
@@ -81,5 +81,13 @@ export class FormComponent implements OnInit {
 
   clearPersonsList() {
     this.personsService.clearList();
+  }
+
+  removePerson(){
+    if (this.idx === undefined) return;
+    // remove person
+    this.personsService.removePersonByIdx(this.idx);
+    // go to people endpoint
+    this.router.navigate(['people']);
   }
 }

@@ -41,4 +41,8 @@ export class PersonsService {
   updatePerson(idx: number, newPersonData: Person) {
     this.persons[idx] = newPersonData;
   }
+
+  removePersonByIdx(idx: number) {
+    this.persons.splice(idx, 1);
+  }
 }

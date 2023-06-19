@@ -16,6 +16,13 @@
       placeholder="Last name"
       [(ngModel)]="lastName"
     />
-    <button type="submit" style="cursor: pointer">+</button>
+    <button type="submit" style="cursor: pointer; margin-right: 4px">+</button>
+    <button
+      *ngIf="idx"
+      type="button"
+      (click)="removePerson()"
+      style="cursor: pointer; margin-right: 4px"
+      class="button-red"
+    ><i class="fa fa-trash"></i></button>
   </form>
 </section>
