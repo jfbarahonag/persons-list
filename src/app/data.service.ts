@@ -22,4 +22,11 @@ export class DataServices {
   getPersons() {
     return this.httpClient.get(this.url);
   }
+
+  updatePerson(idx: number, data: Person) {
+    const personUrl = `${this.url.split('.json')[0]}/${idx}.json`;
+    this.httpClient
+      .put(personUrl, data)
+      .subscribe((response) => console.log(response));
+  }
 }

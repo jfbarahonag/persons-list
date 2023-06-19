@@ -50,6 +50,7 @@ export class PersonsService {
 
   updatePerson(idx: number, newPersonData: Person) {
     this.persons[idx] = newPersonData;
+    this.dataServices.updatePerson(idx, newPersonData);
   }
 
   removePersonByIdx(idx: number) {
