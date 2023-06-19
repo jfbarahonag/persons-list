@@ -53,7 +53,17 @@ export class PersonsService {
     this.dataServices.updatePerson(idx, newPersonData);
   }
 
+  editPersons() {
+    if (this.persons) {
+      this.dataServices.savePersons(this.persons);
+    }
+  }
+
   removePersonByIdx(idx: number) {
+    // remove by the idx
     this.persons.splice(idx, 1);
+    this.dataServices.removePerson(idx);
+    // save all db again to regenrate the idxs
+    this.editPersons();
   }
 }

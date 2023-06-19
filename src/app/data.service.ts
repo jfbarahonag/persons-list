@@ -29,4 +29,11 @@ export class DataServices {
       .put(personUrl, data)
       .subscribe((response) => console.log(response));
   }
+
+  removePerson(idx: number) {
+    const personUrl = `${this.url.split('.json')[0]}/${idx}.json`;
+    this.httpClient
+      .delete(personUrl)
+      .subscribe((response) => console.log(response));
+  }
 }
