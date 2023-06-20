@@ -1,3 +1,4 @@
+import { LoginGuard } from './login/login-guard.service';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { FormComponent } from './persons/form/form.component';
@@ -8,10 +9,12 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    canActivate: [LoginGuard],
     component: PersonsComponent,
   },
   {
     path: 'people',
+    canActivate: [LoginGuard],
     component: PersonsComponent,
     children: [
       {
