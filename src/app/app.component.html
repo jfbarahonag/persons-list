@@ -1,3 +1,11 @@
+<div class="box centered" *ngIf="!isLoggedIn()">
+  <a routerLink="/login"><i style="font-size: 48px;" class="fa fa-sign-in fa-6"></i></a>
+</div>
+
+<div class="box centered" *ngIf="isLoggedIn()">
+  <a style="cursor: pointer;" (click)="logout()"><i style="font-size: 48px;" class="fa fa-sign-out"></i></a>
+</div>
+
 <!-- heading -->
 <section class="box" id="heading">
   <h1>{{ title }}</h1>

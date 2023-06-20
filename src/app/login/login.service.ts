@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 @Injectable()
 export class LoginService {
@@ -25,7 +25,24 @@ export class LoginService {
       });
   }
 
+  logout() {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        console.log('Sign-Out successful');
+        this.token = '';
+        this.router.navigate(['/login']);
+      })
+      .catch((err) => {
+        console.error('Sign-Out error: ', err.code);
+      });
+  }
+
   getIdToken() {
     return this.token;
+  }
+
+  isLoggedIn() {
+    return this.token !== '';
   }
 }
